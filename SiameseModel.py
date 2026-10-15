@@ -3,10 +3,10 @@ import torch
 from torch import nn
 from torchvision import models
 
-class VGG16Siamese(nn.modules):
+class VGG16Siamese(nn.Module):
 
 
-    def __int__(self,embdeddingSize=256):
+    def __init__(self,embdeddingSize=256):
         super.__init__()
 
         model=models.vgg16(models.VGG16_Weights.DEFAULT)
@@ -25,4 +25,4 @@ class VGG16Siamese(nn.modules):
         outputP=self.featureEncode(positive)
         outputN=self.featureEncode(negative)
 
-        return outputA,outputP,outputN
+        return nn.functional.normalize(outputA,p=2,dim=1),nn.functional.normalize(outputP,p=2,dim=1),nn.functional.normalize(outputN,p=2,dim=1)
