@@ -7,7 +7,7 @@ class VGG16Siamese(nn.Module):
 
 
     def __init__(self,embdeddingSize=256):
-        super.__init__()
+        super().__init__()
 
         model=models.vgg16(models.VGG16_Weights.DEFAULT)
         model.classifier[6]=nn.Identity()
@@ -15,9 +15,9 @@ class VGG16Siamese(nn.Module):
 
         self.featureEncode=nn.Sequential(
             self.VGG,
-            nn.ReLU,
+            nn.ReLU(),
             nn.Linear(4096,2048),
-            nn.Linear(512,embdeddingSize)
+            nn.Linear(2048,embdeddingSize)
         )
 
     def forward(self,anchor,positive,negative):

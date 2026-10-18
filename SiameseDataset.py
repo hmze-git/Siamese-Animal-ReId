@@ -14,13 +14,25 @@ class SiameseDataaset(Dataset):
         self.rootDatasetDir=rootDatasetDir
         self.imageFolds=os.listdir(rootDatasetDir)
 
-        self.transformTrain=v2.Compose([
-            v2.Resize((224,224)),
-            v2.ToTensor(),
-            v2.ToDtype(torch.float32,scale=True)]
-        )
-        #self.transformValid=
-        self.training=isTraining
+
+        if isTraining:
+            self.transformTrain=v2.Compose([
+                v2.Resize((224,224)),
+                v2.ToTensor(),
+                v2.ToDtype(torch.float32,scale=True),
+                v2.RandAugment(3,3)
+                
+                
+                ]
+            )
+        else:
+                self.transformTrain=v2.Compose([
+                            v2.Resize((224,224)),
+                            v2.ToTensor(),
+                            v2.ToDtype(torch.float32,scale=True),
+                            ]
+                        )
+
 
 
 
