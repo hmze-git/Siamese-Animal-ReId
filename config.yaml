@@ -1,0 +1,14 @@
+data_root: "data/dogs"
+run_name: "baseline"
+
+backbone: "resnet50"
+embedding_dim: 512
+image_size: 224
+batch_size: 64
+lr: 0.0003
+weight_decay: 0.0001
+epochs: 40
+loss: "arcface"
+margin: 0.5
+scale: 64
+seed: 42

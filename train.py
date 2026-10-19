@@ -21,8 +21,8 @@ DEVICE=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 #---------------------------------Loss------------------------------------
-trainLossFn=TripletMarginLoss(margin=1,p=2)
-validLossFN=TripletMarginLoss(margin=1,p=2)
+trainLossFn=TripletMarginLoss(margin=0.7,p=2)
+validLossFN=TripletMarginLoss(margin=0.7,p=2)
 
 
 
